@@ -14,6 +14,7 @@ import { ToastModule } from "primeng/toast"
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './modules/home/home.component';
+import { RippleModule } from "primeng/ripple";
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -27,8 +28,9 @@ import { HomeComponent } from './modules/home/home.component';
     CardModule,
     InputTextModule,
     ButtonModule,
-    ToastModule
-  ],
+    ToastModule,
+    RippleModule
+],
   providers: [],
   bootstrap: [AppComponent],
 })
