@@ -25,7 +25,7 @@
       <form [formGroup]="signUpForm" (ngSubmit)="onSubmitSignupForm()">
         <p-card styleClass="mt-10" header="Criar Conta" subheader="Crie já sua conta gratuíta!" *ngIf="!loginCard">
           <div class="flex justify-content-center align-content-center text-align-center">
-            <input type="text" pInputText placeholder="Nome" formControlName="nome">
+            <input type="text" pInputText placeholder="Nome" formControlName="name">
           </div>
           <div class="flex justify-content-center align-content-center text-align-center mt-3">
             <input type="email" pInputText placeholder="Email" formControlName="email">
