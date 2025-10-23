@@ -11,6 +11,9 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
     $npm install primeicons@5
     $npm install primeflex@3
 
+### Instalando o Ngx Cookie Service
+    $npm install ngx-cookie-service@15.0.0 --save
+
 
 
 
