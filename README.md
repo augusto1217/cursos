@@ -1,7 +1,7 @@
 # Cursos
 ### Angular
   - Projetos
-    - wheather-app
+    - weather-app
     - stock-control
 
 # Softwares Utilizados
