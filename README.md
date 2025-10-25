@@ -1,8 +1,8 @@
-# Cursos
+## Cursos:
 
-## Angular
+### - Angular
 
-### Softwares Utilizados
+#### Softwares Utilizados
  - [Visua Studio Code](https://code.visualstudio.com/docs/?dv=linux64_deb)
  - Java Virtual Machine
  - [beekeeperstudio](https://docs.beekeeperstudio.io/installation/linux/#deb)
