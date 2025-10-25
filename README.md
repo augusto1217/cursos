@@ -5,15 +5,58 @@
     - stock-control
 
 # Softwares Utilizados
- - VsCode
- - Java
+ - [Visua Studio Code](https://code.visualstudio.com/docs/?dv=linux64_deb)
+ - Java Virtual Machine
  - [beekeeperstudio](https://docs.beekeeperstudio.io/installation/linux/#deb)
 
-###### Install our GPG key
-    curl -fsSL https://deb.beekeeperstudio.io/beekeeper.key | sudo gpg --dearmor --output /usr/share/keyrings/beekeeper.gpg \ && sudo chmod go+r /usr/share/keyrings/beekeeper.gpg \ && echo "deb [signed-by=/usr/share/keyrings/beekeeper.gpg] https://deb.beekeeperstudio.io stable main" \ | sudo tee /etc/apt/sources.list.d/beekeeper-studio-app.list > /dev/null
-    sudo apt update && sudo apt install beekeeper-studio -y
+## Instalando Softwares utilizados
 
+#### Install our GPG key
+    curl -fsSL https://deb.beekeeperstudio.io/beekeeper.key | sudo gpg --dearmor --output /usr/share/keyrings/beekeeper.gpg \
+  && sudo chmod go+r /usr/share/keyrings/beekeeper.gpg \
+  && echo "deb [signed-by=/usr/share/keyrings/beekeeper.gpg] https://deb.beekeeperstudio.io stable main" \
+  | sudo tee /etc/apt/sources.list.d/beekeeper-studio-app.list > /dev/null
 
+#### Update apt and install
+    $ sudo apt update && sudo apt install beekeeper-studio -y
+
+#### Tutorial para criar ambiente para angular 15
+
+##### Instalar NVM
+
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+    source ~/.bashrc # Or ~/.zshrc, ~/.profile, etc. 	
+    nvm --version
+
+##### Instalar Node
     
+    nvm install node 18
+ 	nvm use 18
+ 	nvm alias default 18
+
+##### Instalar Angular
+    npm install -g @angular/cli@15
+
+##### Instalar plugins no VsCode
+
+- Angular Extension Pack
+- Material Icon Theme
+- Extension Pack for Java
+- Markdown Preview Enhanced
+
+##### Comandos para validar a instalação do angular
+
+    ng version
+
+##### Comando para criar novo projeto no Angular:
+    ng new app-name
+
+##### Instalar fonte awesome npm:
+    npm install @fortawesome/fontawesome-svg-core@^6.1.0
+    npm install @fortawesome/free-solid-svg-icons@^6.1.0
+    npm install @fortawesome/angular-fontawesome@^0.12.1
+
+##### Para trabalhar com arquivos MD instale o markdown:
+    npm install -g markdownlint-cli
 
 
