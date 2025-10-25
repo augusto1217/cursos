@@ -1,10 +1,10 @@
 # cursos
-- Angular
+## Angular
   - Projetos
     - wheather-app
     - stock-control
 
-### Softwares Utilizados
+# Softwares Utilizados
  - VsCode
  - Java
  - [beekeeperstudio](https://docs.beekeeperstudio.io/installation/linux/#deb)
