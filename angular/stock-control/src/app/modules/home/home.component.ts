@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import { MessageService } from 'primeng/api';
 import { AuthRequest } from 'src/app/models/interfaces/user/auth/AuthRequest';
 import { SignupUserRequest } from 'src/app/models/interfaces/user/SignupUserRequest';
 import { UserService } from 'src/app/services/user/user.service';
@@ -27,8 +28,9 @@ export class HomeComponent {
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private coockieService: CookieService
-  ) {}
+    private coockieService: CookieService,
+    private messageService: MessageService
+  ) { }
 
   onSubmitLoginForm(): void {
     if (this.loginForm.value && this.loginForm.valid) {
@@ -37,10 +39,22 @@ export class HomeComponent {
           if (response) {
             this.coockieService.set('USER_INFO', response?.token);
             this.loginForm.reset();
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Sucesso',
+              detail: `Bem vindo de volta ${response?.name}!`,
+              life: 3000,
+            });
           }
         },
-        error(err) {
-            console.log(err)
+        error: (err) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Erro',
+            detail: `Error ao realizar login!`,
+            life: 3000,
+          });
+          console.log(err);
         },
       });
     }
@@ -52,13 +66,28 @@ export class HomeComponent {
         .signupUser(this.signUpForm.value as SignupUserRequest)
         .subscribe({
           next: (response) => {
-            if (response) {
-              alert('Usuario teste criado com sucesso.');
+            if (response) {              
               this.signUpForm.reset();
               this.loginCard = true;
+
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Sucesso',
+                detail: 'Usuário criado com sucesso!',
+                life: 3000,
+              });
+
             }
           },
-          error: (err) => console.log(err),
+          error: (err) => {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Erro',
+              detail: `Erro ao criar usuário!`,
+              life: 3000,
+            });
+            console.log(err);
+          }
         });
     }
   }
