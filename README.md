@@ -1,5 +1,5 @@
-# cursos
-## Angular
+# Cursos
+### Angular
   - Projetos
     - wheather-app
     - stock-control
