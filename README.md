@@ -1,4 +1,4 @@
-w### cursos
+### cursos
 - Angular
 
 ###### Softwares Utilizados
