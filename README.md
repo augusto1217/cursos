@@ -20,6 +20,14 @@
 #### Update apt and install
     $ sudo apt update && sudo apt install beekeeper-studio -y
 
+#### Instalar plugins no VsCode
+
+- Angular Extension Pack
+- Material Icon Theme
+- Extension Pack for Java
+- Markdown Preview Enhanced
+
+
 #### Tutorial para criar ambiente para angular 15
 
 ##### Instalar NVM
@@ -37,13 +45,6 @@
 ##### Instalar Angular
     npm install -g @angular/cli@15
 
-##### Instalar plugins no VsCode
-
-- Angular Extension Pack
-- Material Icon Theme
-- Extension Pack for Java
-- Markdown Preview Enhanced
-
 ##### Comandos para validar a instalação do angular
 
     ng version
@@ -51,12 +52,6 @@
 ##### Comando para criar novo projeto no Angular:
     ng new app-name
 
-##### Instalar fonte awesome npm:
-    npm install @fortawesome/fontawesome-svg-core@^6.1.0
-    npm install @fortawesome/free-solid-svg-icons@^6.1.0
-    npm install @fortawesome/angular-fontawesome@^0.12.1
-
 ##### Para trabalhar com arquivos MD instale o markdown:
     npm install -g markdownlint-cli
-
 
