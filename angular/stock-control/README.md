@@ -14,6 +14,13 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 ### Instalando o Ngx Cookie Service
     $npm install ngx-cookie-service@15.0.0 --save
 
+### Instalando o Chart.js
+    $npm install chart.js@4.3.0 --save
+
+#### adicionar no arquivo package.json o script:
+    "scripts": [
+        "../node_modules/chart.js/dist/chart.js"
+    ]
 
 
 
