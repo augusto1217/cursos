@@ -19,6 +19,7 @@ export class AuthGuardService {
         this.router.navigate(['/home']);
         return false;
       }
-      return this.userService.isLoggedin();
+      this.userService.isLoggedin();
+      return true;
     }
 }
