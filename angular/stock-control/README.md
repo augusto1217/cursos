@@ -8,7 +8,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 ### Instalando o PrimeNg, PrimeIcons
     $npm install primeng@15
-    $npm install primeicons@5
+    $npm install primeicons@6
     $npm install primeflex@3
 
 ### Instalando o Ngx Cookie Service
