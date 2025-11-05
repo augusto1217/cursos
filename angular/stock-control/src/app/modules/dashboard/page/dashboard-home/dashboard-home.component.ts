@@ -17,7 +17,7 @@ export class DashboardHomeComponent implements OnInit {
     private productService: ProductsService,
     private messageService: MessageService,
     private productDtService: ProductsDataTransferService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getProductsDatas();
@@ -26,21 +26,21 @@ export class DashboardHomeComponent implements OnInit {
   getProductsDatas(): void {
     this.productService
       .getAllProducts()
-    .subscribe({
-      next: (response) => {
-        if(response.length > 0) {
-          this.productList = response;
-          this.productDtService.setProductsDatas(this.productList);
-        }
-      }, error: (err) => {
-        console.log(err);
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Erro',
-          detail: 'Erro ao buscar produtos!!',
-          life: 2500,
-        });
-      },
-    });
+      .subscribe({
+        next: (response) => {
+          if (response.length > 0) {
+            this.productList = response;
+            this.productDtService.setProductsDatas(this.productList);
+          }
+        }, error: (err) => {
+          console.log(err);
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Erro',
+            detail: 'Erro ao buscar produtos!!',
+            life: 2500,
+          });
+        },
+      });
   }
 }
