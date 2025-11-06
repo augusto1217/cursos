@@ -20,6 +20,13 @@ const routes: Routes = [
       (m) => m.DashboardModule
     ),
     canActivate: [AuthGuardService]
+  },
+  {
+    path: 'products',
+    loadChildren: () => import('./modules/products/products.module').then(
+      (p) => p.ProductsModule
+    ),
+    canActivate: [AuthGuardService]
   }
 ];
 
