@@ -1,0 +1,23 @@
+<div class="grid">
+    <div class="col-12">
+        <p-card
+            styleClass="shadow-3 m-5 text-indigo-800"
+            header="Produtos em Estoque"
+        >
+            <p-table 
+                #productsTable
+                [value]="products"
+                [rows]="10"
+                [paginator]="true"
+                [responsive]="true"
+                [globalFilterFields]="['name','amount']"
+                [tableStyle]="{'min-with': '75rem'}"
+                [(selection)]="productsSelected"
+                [rowHover]="true"
+                [showCurrentPageReport]="true"
+                dataKey="id"
+                currentPageReportTemplate="Mostrando {first} de {last} produtos"
+                ></p-table>
+        </p-card>
+    </div>
+</div>
