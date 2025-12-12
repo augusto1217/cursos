@@ -1,12 +1,12 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { SignupUserRequest } from 'src/app/models/interfaces/user/SignupUserRequest';
+import { AuthRequest } from 'src/app/models/interfaces/user/auth/AuthRequest';
+import { UserService } from 'src/app/services/user/user.service';
 import { CookieService } from 'ngx-cookie-service';
 import { MessageService } from 'primeng/api';
-import { Observable, Subject, take, takeUntil } from 'rxjs';
-import { AuthRequest } from 'src/app/models/interfaces/user/auth/AuthRequest';
-import { SignupUserRequest } from 'src/app/models/interfaces/user/SignupUserRequest';
-import { UserService } from 'src/app/services/user/user.service';
+import { Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -14,9 +14,7 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnDestroy {
-
   private destroy$ = new Subject<void>();
-
   loginCard = true;
 
   loginForm = this.formBuilder.group({
@@ -24,7 +22,7 @@ export class HomeComponent implements OnDestroy {
     password: ['', Validators.required],
   });
 
-  signUpForm = this.formBuilder.group({
+  signupForm = this.formBuilder.group({
     name: ['', Validators.required],
     email: ['', Validators.required],
     password: ['', Validators.required],
@@ -33,30 +31,28 @@ export class HomeComponent implements OnDestroy {
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private coockieService: CookieService,
+    private cookieService: CookieService,
     private messageService: MessageService,
     private router: Router
-  ) { }  
+  ) {}
 
   onSubmitLoginForm(): void {
     if (this.loginForm.value && this.loginForm.valid) {
-      this.userService.authUser(this.loginForm.value as AuthRequest)
-        .pipe(
-          takeUntil(this.destroy$)
-        )
+      this.userService
+        .authUser(this.loginForm.value as AuthRequest)
+        .pipe(takeUntil(this.destroy$))
         .subscribe({
           next: (response) => {
             if (response) {
-              this.coockieService.set('USER_INFO', response?.token);
+              this.cookieService.set('USER_INFO', response?.token);
               this.loginForm.reset();
-
               this.router.navigate(['/dashboard']);
 
               this.messageService.add({
                 severity: 'success',
                 summary: 'Sucesso',
                 detail: `Bem vindo de volta ${response?.name}!`,
-                life: 3000,
+                life: 2000,
               });
             }
           },
@@ -64,8 +60,8 @@ export class HomeComponent implements OnDestroy {
             this.messageService.add({
               severity: 'error',
               summary: 'Erro',
-              detail: `Error ao realizar login!`,
-              life: 3000,
+              detail: `Erro ao fazer o login!`,
+              life: 2000,
             });
             console.log(err);
           },
@@ -74,25 +70,21 @@ export class HomeComponent implements OnDestroy {
   }
 
   onSubmitSignupForm(): void {
-    if (this.signUpForm.value && this.signUpForm.valid) {
+    if (this.signupForm.value && this.signupForm.valid) {
       this.userService
-        .signupUser(this.signUpForm.value as SignupUserRequest)
-        .pipe(
-          takeUntil(this.destroy$)
-        )
+        .signupUser(this.signupForm.value as SignupUserRequest)
+        .pipe(takeUntil(this.destroy$))
         .subscribe({
           next: (response) => {
             if (response) {
-              this.signUpForm.reset();
+              this.signupForm.reset();
               this.loginCard = true;
-
               this.messageService.add({
                 severity: 'success',
                 summary: 'Sucesso',
                 detail: 'Usuário criado com sucesso!',
-                life: 3000,
+                life: 2000,
               });
-
             }
           },
           error: (err) => {
@@ -100,10 +92,10 @@ export class HomeComponent implements OnDestroy {
               severity: 'error',
               summary: 'Erro',
               detail: `Erro ao criar usuário!`,
-              life: 3000,
+              life: 2000,
             });
             console.log(err);
-          }
+          },
         });
     }
   }

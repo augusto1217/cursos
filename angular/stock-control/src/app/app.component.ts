@@ -6,15 +6,12 @@ import { PrimeNGConfig } from 'primeng/api';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-
-export class AppComponent implements OnInit{
-
+export class AppComponent implements OnInit {
   title = 'stock-control';
 
-  constructor(private primengConfig: PrimeNGConfig) {}
+  constructor(private primeNgConfig: PrimeNGConfig) {}
 
   ngOnInit(): void {
-    this.primengConfig.ripple = true;
+    this.primeNgConfig.ripple = true;
   }
-
 }

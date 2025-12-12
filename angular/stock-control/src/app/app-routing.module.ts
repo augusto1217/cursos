@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './modules/home/home.component';
-import { DashboardHomeComponent } from './modules/dashboard/page/dashboard-home/dashboard-home.component';
-import { AuthGuardService } from './guard/auth-guard.service';
+import { AuthGuard } from './guards/auth-guard.service';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboad',
+    redirectTo: 'dashboard',
     pathMatch: 'full',
   },
   {
@@ -16,22 +15,24 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    loadChildren: () => import('./modules/dashboard/dashboard.module').then(
-      (m) => m.DashboardModule
-    ),
-    canActivate: [AuthGuardService]
+    loadChildren: () =>
+      import('./modules/dashboard/dashboard.module').then(
+        (m) => m.DashboardModule
+      ),
+    canActivate: [AuthGuard],
   },
   {
     path: 'products',
-    loadChildren: () => import('./modules/products/products.module').then(
-      (p) => p.ProductsModule
-    ),
-    canActivate: [AuthGuardService]
-  }
+    loadChildren: () =>
+      import('./modules/products/products.module').then(
+        (m) => m.ProductsModule
+      ),
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

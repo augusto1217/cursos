@@ -1,8 +1,7 @@
-export interface DeleteProductResponse {
-  id: string;
+export interface CreateProductRequest {
   name: string;
   price: string;
   description: string;
-  amount: number;
   category_id: string;
+  amount: number;
 }
